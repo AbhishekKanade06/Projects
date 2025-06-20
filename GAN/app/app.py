@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 st.set_page_config(page_title="Fashion GAN Generator", layout="wide")
 
