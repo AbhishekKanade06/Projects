@@ -15,7 +15,7 @@ generate = st.sidebar.button("Generate Images")
 def load_gan_model(model_path):
     return load_model(model_path)
 
-generator = load_gan_model('generatormodel.h5')
+generator = load_gan_model('GAN/app/generatormodel.h5')
 
 st.title("🧥 Fashion GAN Image Generator")
 st.markdown(
