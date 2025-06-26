@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv('Api_Key')
 
+print(api_key)
+
 # Set page config
 st.set_page_config(page_title="LLM Chatbot", layout="centered")
 
