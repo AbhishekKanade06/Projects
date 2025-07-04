@@ -4,10 +4,10 @@ import joblib
 import numpy as np
 
 # Load the trained model
-model = joblib.load('/Users/abhishekkanade/Documents/notebook/My_Project/Carbon_Emission_perdiction/src/model/forecasting_co2_emmision.pkl')
+model = joblib.load('model/forecasting_co2_emmision.pkl')
 
 # Load the cleaned data
-data = pd.read_csv('/Users/abhishekkanade/Documents/notebook/My_Project/Carbon_Emission_perdiction/src/data/data_cleaned.csv')
+data = pd.read_csv('data/data_cleaned.csv')
 
 countries=['Angola', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Bangladesh', 'Bulgaria', 'Belarus', 'Bolivia', 'Brazil', 'Canada', 'Switzerland', 'Chile', 'China', "Cote d'Ivoire", 'Cameroon', 'Congo, Rep.', 'Colombia', 'Costa Rica', 'Czech Republic', 'Germany', 'Denmark', 'Dominican Republic', 'Algeria', 'Europe & Central Asia', 'Ecuador', 'Egypt, Arab Rep.', 'Euro area', 'Spain', 'Ethiopia', 'Finland', 'France', 'United Kingdom', 'Ghana', 'Greece', 'Guatemala', 'Honduras', 'Hungary', 'Indonesia', 'India', 'Ireland', 'Iran, Islamic Rep.', 'Israel', 'Italy', 'Jordan', 'Japan', 'Kazakhstan', 'Kenya', 'Korea, Rep.', 'Latin America & Caribbean', 'Low income', 'Lower middle income', 'Low & middle income', 'Morocco', 'Mexico', 'Middle income', 'Middle East & North Africa', 'Mozambique', 'Malaysia', 'Nigeria', 'Netherlands', 'New Zealand', 'Pakistan', 'Panama', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Paraguay', 'Romania', 'Russian Federation', 'South Asia', 'Saudi Arabia', 'Sudan', 'Senegal', 'El Salvador', 'Sub-Saharan Africa', 'Sweden', 'Syrian Arab Republic', 'Togo', 'Thailand', 'Turkey', 'Tanzania', 'Ukraine', 'Upper middle income', 'Uruguay', 'United States', 'Uzbekistan', 'Venezuela, RB', 'Vietnam', 'World', 'Yemen, Rep.', 'South Africa', 'Congo, Dem. Rep.', 'Zambia']
 # Define the list of selected countries for forecasting
