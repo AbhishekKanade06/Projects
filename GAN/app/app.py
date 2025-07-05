@@ -44,6 +44,6 @@ if generate:
 
 st.markdown("---")
 st.markdown(
-    "<small>Made with ❤ using Streamlit and TensorFlow | [GitHub](https://github.com/)</small>",
+    "<small>Made with ❤ using Streamlit and TensorFlow | [GitHub](https://github.com/AbhishekKanade06/Projects/tree/main/GAN)</small>",
     unsafe_allow_html=True,
 )
