@@ -49,9 +49,9 @@ if example:
     st.session_state.target = target
 elif uploaded_file:
     st.session_state.df = pd.read_csv(uploaded_file)
-    st.session_state.target = None
+    st.session_state.target_col = None
 else:
-    df = None
+    st.session_state.df = None
 
 if st.session_state.df is not None:
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
@@ -59,20 +59,20 @@ if st.session_state.df is not None:
     st.dataframe(st.session_state.df.head(), use_container_width=True)
     st.markdown(f"**Shape:** {st.session_state.df.shape[0]} Rows × {st.session_state.df.shape[1]} Columns")
     st.markdown('</div>', unsafe_allow_html=True)
-    target_col = st.selectbox("🎯 Select Target Column", st.session_state.df.columns, key="target_col", index=(st.session_state.df.columns.get_loc(st.session_state.target) if st.session_state.target else 0))
+    st.session_state.target_col = st.selectbox("🎯 Select Target Column", st.session_state.df.columns, key="target_col", index=(st.session_state.df.columns.get_loc(st.session_state.target) if st.session_state.target else 0))
 else:
     st.info("Upload a CSV file or load the example dataset to start.")
-    target_col = None
+    st.session_state.target_col = None
 
 # -----------------------------------------------------
 # SECTION: PREPROCESSING
 # -----------------------------------------------------
-if st.session_state.df is not None and target_col:
+if st.session_state.df is not None and st.session_state.target_col:
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
     st.subheader("⚙️ Data Preprocessing")
     if st.button("Start Preprocessing", type="primary"):
         with st.spinner("Preprocessing..."):
-            pre = Preprocess(st.session_state.df, target_col)
+            pre = Preprocess(st.session_state.df, st.session_state.target_col)
             X_scaled, y, le, scaler, model_type = pre.preprocess()
             st.session_state.X_scaled = X_scaled
             st.session_state.y = y
@@ -80,7 +80,7 @@ if st.session_state.df is not None and target_col:
             st.session_state.scaler = scaler
             st.session_state.model_type = model_type
             st.session_state.preprocessed_df = X_scaled.copy()
-            st.session_state.preprocessed_df[target_col] = y
+            st.session_state.preprocessed_df[st.session_state.target_col] = y
             time.sleep(0.5)
         st.success("Preprocessing completed!")
     if "preprocessed_df" in st.session_state:
@@ -172,7 +172,7 @@ if st.session_state.get("X_scaled") is not None and st.session_state.get("y") is
     
     st.markdown('<div class="success-section">', unsafe_allow_html=True)
     if "best_model" in st.session_state:
-        sg=ScriptGenerator(df,target_col)
+        sg=ScriptGenerator(st.session_state.df,st.session_state.target_col)
         zip_buffer=io.BytesIO()
         with zipfile.ZipFile(zip_buffer,'a',zipfile.ZIP_DEFLATED) as zip_file:
             sg.create_script()
