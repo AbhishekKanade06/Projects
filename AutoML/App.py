@@ -33,8 +33,7 @@ st.write("Upload, preprocess, visualize data, and let AI select the best model â
 st.sidebar.markdown('<div class="sidebar-title">Step 1: Upload Data</div>', unsafe_allow_html=True)
 uploaded_file = st.sidebar.file_uploader("Upload your dataset (.csv)", type=["csv"])
 example = st.sidebar.checkbox("Use Example Dataset")
-st.sidebar.markdown("---")
-st.sidebar.markdown('<div class="sidebar-title">Step 2: Select Target</div>', unsafe_allow_html=True)
+
 
 # ----------------------------------------------------
 # DATA UPLOAD & TARGET SELECTION
