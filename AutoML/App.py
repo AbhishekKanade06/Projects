@@ -51,9 +51,9 @@ elif uploaded_file:
     st.session_state.df = pd.read_csv(uploaded_file)
     st.session_state.target = None
 else:
-    st.session_state.df = None
+    df = None
 
-if st.session_state.df is not None:
+if df is not None:
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
     st.subheader("📋 Dataset Preview")
     st.dataframe(st.session_state.df.head(), use_container_width=True)
@@ -67,12 +67,12 @@ else:
 # -----------------------------------------------------
 # SECTION: PREPROCESSING
 # -----------------------------------------------------
-if df is not None and target_col:
+if st.session_state.df is not None and target_col:
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
     st.subheader("⚙️ Data Preprocessing")
     if st.button("Start Preprocessing", type="primary"):
         with st.spinner("Preprocessing..."):
-            pre = Preprocess(df, target_col)
+            pre = Preprocess(st.session_state.df, target_col)
             X_scaled, y, le, scaler, model_type = pre.preprocess()
             st.session_state.X_scaled = X_scaled
             st.session_state.y = y
