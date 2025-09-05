@@ -53,7 +53,7 @@ elif uploaded_file:
 else:
     df = None
 
-if df is not None:
+if st.session_state.df is not None:
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
     st.subheader("📋 Dataset Preview")
     st.dataframe(st.session_state.df.head(), use_container_width=True)
