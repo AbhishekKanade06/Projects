@@ -51,7 +51,7 @@ elif uploaded_file:
     st.session_state.df = pd.read_csv(uploaded_file)
     st.session_state.target = None
 else:
-    st.session_statedf = None
+    st.session_state.df = None
 
 if st.session_state.df is not None:
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
