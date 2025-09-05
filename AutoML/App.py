@@ -48,8 +48,7 @@ if example:
     st.session_state.df = df
     st.session_state.target = target
 elif uploaded_file:
-    df = pd.read_csv(uploaded_file)
-    st.session_state.df = df
+    st.session_state.df = pd.read_csv(uploaded_file)
     st.session_state.target = None
 else:
     df = None
@@ -57,10 +56,10 @@ else:
 if df is not None:
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
     st.subheader("📋 Dataset Preview")
-    st.dataframe(df.head(), use_container_width=True)
-    st.markdown(f"**Shape:** {df.shape[0]} Rows × {df.shape[1]} Columns")
+    st.dataframe(st.session_state.df.head(), use_container_width=True)
+    st.markdown(f"**Shape:** {st.session_state.df.shape[0]} Rows × {st.session_state.df.shape[1]} Columns")
     st.markdown('</div>', unsafe_allow_html=True)
-    target_col = st.selectbox("🎯 Select Target Column", df.columns, key="target_col", index=(df.columns.get_loc(st.session_state.target) if st.session_state.target else 0))
+    target_col = st.selectbox("🎯 Select Target Column", st.session_state.df.columns, key="target_col", index=(st.session_state.df.columns.get_loc(st.session_state.target) if st.session_state.target else 0))
 else:
     st.info("Upload a CSV file or load the example dataset to start.")
     target_col = None
