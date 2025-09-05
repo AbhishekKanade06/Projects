@@ -51,9 +51,9 @@ elif uploaded_file:
     st.session_state.df = pd.read_csv(uploaded_file)
     st.session_state.target = None
 else:
-    df = None
+    st.session_statedf = None
 
-if df is not None:
+if st.session_state.df is not None:
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
     st.subheader("📋 Dataset Preview")
     st.dataframe(st.session_state.df.head(), use_container_width=True)
