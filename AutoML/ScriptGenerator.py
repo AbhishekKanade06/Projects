@@ -1,30 +1,19 @@
 import pandas as pd
 
 class ScriptGenerator:
-    
 
-    def __init__(self, df,target):
-        self.df = df  
+    def __init__(self, info,target):
+        self.info = info
         self.target=target
         self.script=''
-
-    def get_info(self):
-        info={}
-        for col in self.df.columns:
-            info[col] = self.df[col].dtype.name
-        return info ,self.target
-    def Gen_script(self):
-        with open('script.py','+w') as fd:
-            fd.write(self.script)
     
     def create_script(self):
         self.script+=dependancy
-        info,target=self.get_info()
-        self.script+=f"info={info} \ntarget='{target}'"
+        self.script+=f"info={self.info} \ntarget='{self.target}'"
         self.script+=load_script
         self.script+=input_script
         self.script+=prediction_script
-        self.Gen_script()
+        # self.Gen_script()
 
 dependancy ="""
 

@@ -71,12 +71,13 @@ if st.session_state.df is not None and st.session_state.target_col:
     if st.button("Start Preprocessing", type="primary"):
         with st.spinner("Preprocessing..."):
             pre = Preprocess(st.session_state.df, st.session_state.target_col)
-            X_scaled, y, le, scaler, model_type = pre.preprocess()
+            X_scaled, y, le, scaler, model_type, info = pre.preprocess()
             st.session_state.X_scaled = X_scaled
             st.session_state.y = y
             st.session_state.le = le
             st.session_state.scaler = scaler
             st.session_state.model_type = model_type
+            st.session_state.info = info
             st.session_state.preprocessed_df = X_scaled.copy()
             st.session_state.preprocessed_df[st.session_state.target_col] = y
             time.sleep(0.5)
@@ -84,6 +85,7 @@ if st.session_state.df is not None and st.session_state.target_col:
     if "preprocessed_df" in st.session_state:
         st.write("#### Preprocessed Data Sample")
         st.dataframe(st.session_state.preprocessed_df.head())
+        st.markdown(f"**Shape:** {st.session_state.df.shape[0]} Rows × {st.session_state.df.shape[1]} Columns")
         buffer = io.BytesIO()
         st.session_state.preprocessed_df.to_csv(buffer, index=False)
         buffer.seek(0)
@@ -170,7 +172,7 @@ if st.session_state.get("X_scaled") is not None and st.session_state.get("y") is
     
     st.markdown('<div class="success-section">', unsafe_allow_html=True)
     if "best_model" in st.session_state:
-        sg=ScriptGenerator(st.session_state.df,st.session_state.target_col)
+        sg=ScriptGenerator(st.session_state.info,st.session_state.target_col)
         zip_buffer=io.BytesIO()
         with zipfile.ZipFile(zip_buffer,'a',zipfile.ZIP_DEFLATED) as zip_file:
             sg.create_script()
