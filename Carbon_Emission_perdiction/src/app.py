@@ -9,10 +9,14 @@ model = joblib.load('/mount/src/projects/Carbon_Emission_perdiction/src/model/fo
 # Load the cleaned data
 data = pd.read_csv('/mount/src/projects/Carbon_Emission_perdiction/src/data/data_cleaned.csv')
 
-countries=['Angola', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Bangladesh', 'Bulgaria', 'Belarus', 'Bolivia', 'Brazil', 'Canada', 'Switzerland', 'Chile', 'China', "Cote d'Ivoire", 'Cameroon', 'Congo, Rep.', 'Colombia', 'Costa Rica', 'Czech Republic', 'Germany', 'Denmark', 'Dominican Republic', 'Algeria', 'Europe & Central Asia', 'Ecuador', 'Egypt, Arab Rep.', 'Euro area', 'Spain', 'Ethiopia', 'Finland', 'France', 'United Kingdom', 'Ghana', 'Greece', 'Guatemala', 'Honduras', 'Hungary', 'Indonesia', 'India', 'Ireland', 'Iran, Islamic Rep.', 'Israel', 'Italy', 'Jordan', 'Japan', 'Kazakhstan', 'Kenya', 'Korea, Rep.', 'Latin America & Caribbean', 'Low income', 'Lower middle income', 'Low & middle income', 'Morocco', 'Mexico', 'Middle income', 'Middle East & North Africa', 'Mozambique', 'Malaysia', 'Nigeria', 'Netherlands', 'New Zealand', 'Pakistan', 'Panama', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Paraguay', 'Romania', 'Russian Federation', 'South Asia', 'Saudi Arabia', 'Sudan', 'Senegal', 'El Salvador', 'Sub-Saharan Africa', 'Sweden', 'Syrian Arab Republic', 'Togo', 'Thailand', 'Turkey', 'Tanzania', 'Ukraine', 'Upper middle income', 'Uruguay', 'United States', 'Uzbekistan', 'Venezuela, RB', 'Vietnam', 'World', 'Yemen, Rep.', 'South Africa', 'Congo, Dem. Rep.', 'Zambia']
+countries=[
+    'Bangladesh', 'China', 'Indonesia', 'India', 'Iran, Islamic Rep.', 'Israel', 'Japan',
+    'Jordan', 'Kazakhstan', 'Korea, Rep.', 'Malaysia', 'Pakistan', 'Philippines',
+    'Saudi Arabia', 'Syrian Arab Republic', 'Thailand', 'Turkey', 'Uzbekistan',
+    'Vietnam', 'Yemen, Rep.'
+ ]
 # Define the list of selected countries for forecasting
-country_code = ['AGO', 'ARG', 'ARM', 'AUS', 'AUT', 'BGD', 'BGR', 'BLR', 'BOL', 'BRA', 'CAN', 'CHE', 'CHL', 'CHN', 'CIV', 'CMR', 'COG', 'COL', 'CRI', 'CZE', 'DEU', 'DNK', 'DOM', 'DZA', 'ECA', 'ECU', 'EGY', 'EMU', 'ESP', 'ETH', 'FIN', 'FRA', 'GBR', 'GHA', 'GRC', 'GTM', 'HND', 'HUN', 'IDN', 'IND', 'IRL', 'IRN', 'ISR', 'ITA', 'JOR', 'JPN', 'KAZ', 'KEN', 'KOR', 'LAC', 'LIC', 'LMC', 'LMY', 'MAR', 'MEX', 'MIC', 'MNA', 'MOZ', 'MYS', 'NGA', 'NLD', 'NZL', 'PAK', 'PAN', 'PER', 'PHL', 'POL', 'PRT', 'PRY', 'ROM', 'RUS', 'SAS', 'SAU', 'SDN', 'SEN', 'SLV', 'SSA', 'SWE', 'SYR', 'TGO', 'THA', 'TUR', 'TZA', 'UKR', 'UMC', 'URY', 'USA', 'UZB', 'VEN', 'VNM', 'WLD', 'YEM', 'ZAF', 'ZAR', 'ZMB']
-
+country_code = 'BGD','CHN','IDN','IND','IRN','ISR','JPN','JOR','KAZ','KOR','MYS','PAK','PHL','SAU','SYR','THA','TUR','UZB','VNM','YEM']
 selected_features = ['cereal_yield', 'gni_per_cap', 'en_per_cap',
                      'pop_urb_aggl_perc', 'prot_area_perc',
                      'pop_growth_perc', 'urb_pop_growth_perc']
