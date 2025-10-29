@@ -16,7 +16,7 @@ countries=[
     'Vietnam', 'Yemen, Rep.'
  ]
 # Define the list of selected countries for forecasting
-country_code = 'BGD','CHN','IDN','IND','IRN','ISR','JPN','JOR','KAZ','KOR','MYS','PAK','PHL','SAU','SYR','THA','TUR','UZB','VNM','YEM']
+country_code = ['BGD','CHN','IDN','IND','IRN','ISR','JPN','JOR','KAZ','KOR','MYS','PAK','PHL','SAU','SYR','THA','TUR','UZB','VNM','YEM']
 selected_features = ['cereal_yield', 'gni_per_cap', 'en_per_cap',
                      'pop_urb_aggl_perc', 'prot_area_perc',
                      'pop_growth_perc', 'urb_pop_growth_perc']
