@@ -87,7 +87,7 @@ def growth_rates_calculation(country, selected_features):
 
 # Streamlit app layout
 st.title("CO₂ Emissions Forecasting")
-st.write("Forecast CO₂ emissions per capita for selected countries over the next 20 years.")
+st.write("Forecast CO₂ emissions per capita for selected countries over the next 3 years.")
 
 # User input for country selection
 country = st.selectbox("Select a country:", countries)
